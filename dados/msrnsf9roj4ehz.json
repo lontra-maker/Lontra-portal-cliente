@@ -1,0 +1,38 @@
+{
+  "c": "Adriana Tempestade ",
+  "o": [
+    {
+      "n": "1000001P",
+      "s": "concluido",
+      "d": "2026-08-19",
+      "t": "Visita técnica — Adriana Tempestade",
+      "v": 165,
+      "eq": "lattepanda alpha",
+      "g": {
+        "pendente": false,
+        "inicio": "2026-08-19",
+        "fisica": 30,
+        "software": 7
+      },
+      "h": [
+        {
+          "s": "concluido",
+          "d": "2026-08-19T15:24:08.500Z"
+        }
+      ],
+      "docs": {
+        "recibo": "dados/msrnsf9roj4ehz/mt08f7th39qnua-recibo.pdf"
+      }
+    }
+  ],
+  "a": [
+    {
+      "t": "Visita técnica — Adriana Tempestade ",
+      "d": "2026-08-19",
+      "h": "08:00",
+      "l": "",
+      "s": "concluido"
+    }
+  ],
+  "atualizadoEm": "2026-08-20T02:01:17.866Z"
+}
