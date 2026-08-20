@@ -7,11 +7,27 @@
       "d": "2026-08-15",
       "t": "Baseado no diagnóstico DIAG-100001B:",
       "v": 80,
+      "eq": "",
+      "g": {
+        "inicio": "2026-08-15",
+        "fisica": 90,
+        "software": 7
+      },
+      "h": [
+        {
+          "s": "em_andamento",
+          "d": "2026-08-15T04:43:30.938Z"
+        },
+        {
+          "s": "manutencao",
+          "d": "2026-08-15T04:44:24.025Z"
+        }
+      ],
       "docs": {
         "recibo": "dados/mstv6zbvdl86ts/mstw4we1m3g1ce-recibo.pdf",
         "orcamento": "dados/mstv6zbvdl86ts/mstw4we1m3g1ce-orcamento.pdf"
       }
     }
   ],
-  "atualizadoEm": "2026-08-20T01:11:14.649Z"
+  "atualizadoEm": "2026-08-20T01:34:06.362Z"
 }
