@@ -1,0 +1,17 @@
+{
+  "c": "Sheyla",
+  "o": [
+    {
+      "n": "1000001B",
+      "s": "manutencao",
+      "d": "2026-08-15",
+      "t": "Baseado no diagnóstico DIAG-100001B:",
+      "v": 80,
+      "docs": {
+        "recibo": "dados/mstv6zbvdl86ts/mstw4we1m3g1ce-recibo.pdf",
+        "orcamento": "dados/mstv6zbvdl86ts/mstw4we1m3g1ce-orcamento.pdf"
+      }
+    }
+  ],
+  "atualizadoEm": "2026-08-20T01:11:14.649Z"
+}
