@@ -9,7 +9,8 @@
       "v": 80,
       "eq": "",
       "g": {
-        "inicio": "2026-08-15",
+        "pendente": true,
+        "inicio": null,
         "fisica": 90,
         "software": 7
       },
@@ -29,5 +30,6 @@
       }
     }
   ],
-  "atualizadoEm": "2026-08-20T01:34:06.362Z"
+  "a": [],
+  "atualizadoEm": "2026-08-20T02:02:14.107Z"
 }
