@@ -1,5 +1,6 @@
 {
   "c": "Sheyla",
+  "v4": "6851",
   "o": [
     {
       "n": "1000001B",
@@ -8,6 +9,7 @@
       "t": "Baseado no diagnóstico DIAG-100001B:",
       "v": 80,
       "eq": "",
+      "assinado": false,
       "g": {
         "pendente": true,
         "inicio": null,
@@ -39,5 +41,5 @@
     }
   ],
   "a": [],
-  "atualizadoEm": "2026-08-21T05:32:02.658Z"
+  "atualizadoEm": "2026-08-21T21:16:02.840Z"
 }
