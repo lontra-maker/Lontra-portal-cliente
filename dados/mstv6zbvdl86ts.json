@@ -4,12 +4,12 @@
   "o": [
     {
       "n": "1000001B",
-      "s": "manutencao",
+      "s": "pendente_pagamento",
       "d": "2026-08-15",
       "t": "Baseado no diagnóstico DIAG-100001B:",
       "v": 80,
       "eq": "",
-      "assinado": false,
+      "assinado": true,
       "g": {
         "pendente": true,
         "inicio": null,
@@ -32,6 +32,10 @@
         {
           "s": "manutencao",
           "d": "2026-08-21T04:06:14.728Z"
+        },
+        {
+          "s": "pendente_pagamento",
+          "d": "2026-08-24T17:12:58.020Z"
         }
       ],
       "docs": {
@@ -41,5 +45,5 @@
     }
   ],
   "a": [],
-  "atualizadoEm": "2026-08-21T21:16:02.840Z"
+  "atualizadoEm": "2026-08-24T17:14:16.979Z"
 }
