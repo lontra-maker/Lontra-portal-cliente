@@ -4,7 +4,7 @@
   "o": [
     {
       "n": "1000002UY",
-      "s": "manutencao",
+      "s": "pendente_pagamento",
       "d": "2026-08-28",
       "t": "Realizado a manutenção da impressora, desentupimento dos dampers e dos jatos de impressão.",
       "v": 160,
@@ -20,6 +20,14 @@
         {
           "s": "manutencao",
           "d": "2026-08-29T02:32:16.752Z"
+        },
+        {
+          "s": "pendente_pagamento",
+          "d": "2026-08-29T02:47:11.529Z"
+        },
+        {
+          "s": "pendente_pagamento",
+          "d": "2026-08-29T02:47:19.220Z"
         }
       ],
       "docs": {
@@ -28,5 +36,5 @@
     }
   ],
   "a": [],
-  "atualizadoEm": "2026-08-29T02:32:33.372Z"
+  "atualizadoEm": "2026-08-29T02:48:43.871Z"
 }
