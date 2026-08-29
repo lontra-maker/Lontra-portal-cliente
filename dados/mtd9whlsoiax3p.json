@@ -4,15 +4,15 @@
   "o": [
     {
       "n": "1000002UY",
-      "s": "pendente_pagamento",
+      "s": "concluido",
       "d": "2026-08-28",
       "t": "Realizado a manutenção da impressora, desentupimento dos dampers e dos jatos de impressão.",
       "v": 160,
       "eq": "Impressora L3250",
-      "assinado": false,
+      "assinado": true,
       "g": {
-        "pendente": true,
-        "inicio": null,
+        "pendente": false,
+        "inicio": "2026-08-29",
         "fisica": 45,
         "software": 0
       },
@@ -28,6 +28,10 @@
         {
           "s": "pendente_pagamento",
           "d": "2026-08-29T02:47:19.220Z"
+        },
+        {
+          "s": "concluido",
+          "d": "2026-08-29T02:49:23.283Z"
         }
       ],
       "docs": {
@@ -36,5 +40,5 @@
     }
   ],
   "a": [],
-  "atualizadoEm": "2026-08-29T02:48:43.871Z"
+  "atualizadoEm": "2026-08-29T02:50:31.627Z"
 }
