@@ -1,0 +1,32 @@
+{
+  "c": "Walter werleys Souza Costa",
+  "v4": "7623",
+  "o": [
+    {
+      "n": "1000002UY",
+      "s": "manutencao",
+      "d": "2026-08-28",
+      "t": "Realizado a manutenção da impressora, desentupimento dos dampers e dos jatos de impressão.",
+      "v": 160,
+      "eq": "Impressora L3250",
+      "assinado": false,
+      "g": {
+        "pendente": true,
+        "inicio": null,
+        "fisica": 45,
+        "software": 0
+      },
+      "h": [
+        {
+          "s": "manutencao",
+          "d": "2026-08-29T02:32:16.752Z"
+        }
+      ],
+      "docs": {
+        "recibo": "dados/mtd9whlsoiax3p/mtdqz4wybloy8p-recibo.pdf"
+      }
+    }
+  ],
+  "a": [],
+  "atualizadoEm": "2026-08-29T02:32:33.372Z"
+}
