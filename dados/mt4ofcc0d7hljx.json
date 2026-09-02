@@ -1,0 +1,27 @@
+{
+  "c": "Andre Luiz",
+  "v4": "5858",
+  "o": [
+    {
+      "n": "1000003LT",
+      "s": "em_andamento",
+      "d": "2026-09-02",
+      "t": "Realizar limpeza e revitalização da carcaça",
+      "v": 120,
+      "eq": "Notebook Dell",
+      "assinado": false,
+      "g": {
+        "pendente": true,
+        "inicio": null,
+        "fisica": 90,
+        "software": 0
+      },
+      "h": [],
+      "docs": {
+        "recibo": "dados/mt4ofcc0d7hljx/mtkfkiobjgbhmn-recibo.pdf"
+      }
+    }
+  ],
+  "a": [],
+  "atualizadoEm": "2026-09-02T18:30:07.480Z"
+}
