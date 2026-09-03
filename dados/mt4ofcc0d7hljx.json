@@ -4,7 +4,7 @@
   "o": [
     {
       "n": "1000003LT",
-      "s": "em_andamento",
+      "s": "manutencao",
       "d": "2026-09-02",
       "t": "Realizar limpeza e revitalização da carcaça",
       "v": 120,
@@ -16,7 +16,12 @@
         "fisica": 90,
         "software": 0
       },
-      "h": [],
+      "h": [
+        {
+          "s": "manutencao",
+          "d": "2026-09-03T07:13:09.505Z"
+        }
+      ],
       "docs": {
         "recibo": "dados/mt4ofcc0d7hljx/mtkfkiobjgbhmn-recibo.pdf"
       }
@@ -24,5 +29,5 @@
   ],
   "a": [],
   "diag": [],
-  "atualizadoEm": "2026-09-03T07:12:27.508Z"
+  "atualizadoEm": "2026-09-03T07:13:46.520Z"
 }
