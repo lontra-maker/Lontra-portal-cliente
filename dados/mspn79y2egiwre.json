@@ -1,0 +1,37 @@
+{
+  "c": "leonado",
+  "v4": "5078",
+  "o": [
+    {
+      "n": "1000001L",
+      "s": "arquivado",
+      "d": "2026-08-15",
+      "t": "Serviço",
+      "v": 8273.65,
+      "eq": "",
+      "assinado": false,
+      "g": null,
+      "h": [
+        {
+          "s": "em_andamento",
+          "d": "2026-08-15T02:23:57.626Z"
+        },
+        {
+          "s": "esperando_peca",
+          "d": "2026-08-15T02:24:24.234Z"
+        },
+        {
+          "s": "arquivado",
+          "d": "2026-08-21T03:58:45.615Z"
+        }
+      ],
+      "docs": {
+        "recibo": "dados/mspn79y2egiwre/mstr5fi1yyjebt-recibo.pdf",
+        "orcamento": "dados/mspn79y2egiwre/mstr5fi1yyjebt-orcamento.pdf"
+      }
+    }
+  ],
+  "a": [],
+  "diag": [],
+  "atualizadoEm": "2026-09-03T07:09:42.029Z"
+}
