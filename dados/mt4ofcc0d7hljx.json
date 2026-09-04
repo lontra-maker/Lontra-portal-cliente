@@ -4,7 +4,7 @@
   "o": [
     {
       "n": "1000004S5",
-      "s": "em_andamento",
+      "s": "esperando_peca",
       "d": "2026-09-04",
       "t": "Baseado no diagnóstico DIAG-100001TF:",
       "v": 363.05,
@@ -20,6 +20,10 @@
         {
           "s": "em_andamento",
           "d": "2026-09-04T18:03:24.916Z"
+        },
+        {
+          "s": "esperando_peca",
+          "d": "2026-09-04T18:08:11.821Z"
         }
       ],
       "docs": {
@@ -67,5 +71,5 @@
   "a": [],
   "diag": [],
   "orc": [],
-  "atualizadoEm": "2026-09-04T18:04:18.218Z"
+  "atualizadoEm": "2026-09-04T18:08:52.762Z"
 }
