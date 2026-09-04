@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Acompanhamento — LontraHelp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#173A5E; --navy-dark:#0F2C48; --navy-darker:#0B2238; --gold:#F4C430;
+    --blue-mid:#2C82C9; --blue-bg:#E8F2FB; --green-ok:#2E8B57; --red-no:#C0392B;
+    --ink:#1F2933; --ink-soft:#5B6B7A; --border:#E1E8EF; --cream:#F4F7FA;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Inter',sans-serif; background:var(--cream); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  .topbar{
+    background:linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color:#fff; padding:18px 20px; text-align:center;
+  }
+  .topbar img{height:44px; margin-bottom:6px;}
+  .topbar .brand{font-family:'Poppins',sans-serif; font-weight:800; font-size:20px;}
+  .topbar .brand .help{color:var(--gold);}
+  .topbar .sub{font-size:11px; opacity:0.8; letter-spacing:0.5px;}
+  .wrap{max-width:480px; margin:0 auto; padding:18px 16px 40px;}
+  .saudacao{font-size:15px; color:var(--ink-soft); margin-bottom:6px; text-align:center;}
+  .saudacao strong{color:var(--navy);}
+  .atualizado-em{font-size:10.5px; color:var(--ink-soft); text-align:center; margin-bottom:16px; opacity:0.8;}
+  .card{
+    background:#fff; border:1px solid var(--border); border-radius:12px;
+    padding:16px; margin-bottom:14px; box-shadow:0 2px 8px rgba(15,44,72,0.06);
+    cursor:pointer; transition:box-shadow 0.15s;
+  }
+  .card:active{box-shadow:0 1px 3px rgba(15,44,72,0.1);}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:10px;}
+  .os-num{font-weight:800; color:var(--navy); font-size:15px;}
+  .os-data{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  .titulo{font-size:13.5px; color:var(--ink); margin-bottom:10px; line-height:1.4;}
+  .rodape-card{display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px dashed var(--border);}
+  .valor{font-weight:800; color:var(--navy); font-size:14px;}
+  .pill{display:inline-block; padding:4px 11px; border-radius:20px; font-size:11.5px; font-weight:700;}
+  .pill-blue{background:var(--blue-bg); color:var(--blue-mid);}
+  .pill-gold{background:#FFF6DC; color:#9C7A05;}
+  .pill-green{background:#E7F5EC; color:var(--green-ok);}
+  .pill-red{background:#FDEEEC; color:var(--red-no);}
+  .pill-gray{background:#EDEFF2; color:#6B7280;}
+  .empty{text-align:center; padding:50px 20px; color:var(--ink-soft);}
+  .empty .ic{font-size:40px; margin-bottom:10px;}
+  .footer-contato{
+    text-align:center; margin-top:28px; padding-top:18px; border-top:1px solid var(--border);
+    font-size:12px; color:var(--ink-soft);
+  }
+  .footer-contato a{color:var(--blue-mid); text-decoration:none; font-weight:600;}
+  .spinner{
+    width:26px; height:26px; border:3px solid var(--border); border-top-color:var(--blue-mid);
+    border-radius:50%; margin:0 auto 12px; animation:girar 0.8s linear infinite;
+  }
+  @keyframes girar{ to{ transform:rotate(360deg); } }
+  .verif-box{
+    background:#fff; border-radius:14px; padding:36px 24px; text-align:center;
+    box-shadow:0 4px 16px rgba(15,44,72,0.08); margin-top:20px;
+  }
+  .verif-icone{font-size:38px; margin-bottom:10px;}
+  .verif-titulo{font-family:'Poppins',sans-serif; font-weight:700; font-size:18px; color:var(--navy); margin-bottom:8px;}
+  .verif-texto{font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin-bottom:20px;}
+  .verif-input{
+    width:140px; text-align:center; font-size:26px; letter-spacing:10px; font-weight:700;
+    padding:12px 8px 12px 18px; border:2px solid var(--border); border-radius:10px;
+    color:var(--navy); margin-bottom:12px;
+  }
+  .verif-input:focus{outline:none; border-color:var(--blue-mid);}
+  .verif-erro{color:var(--red-no); font-size:12.5px; margin-bottom:12px; font-weight:600;}
+  .verif-btn{
+    width:100%; max-width:220px; background:var(--navy); color:#fff; border:none;
+    padding:13px; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer;
+  }
+  .verif-btn:active{opacity:0.85;}
+  .docs-expandido{
+    margin-top:12px; padding-top:12px; border-top:1px solid var(--border);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .btn-doc{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--navy); color:#fff; text-decoration:none;
+    padding:10px 14px; border-radius:8px; font-size:13px; font-weight:700;
+    border:none; cursor:pointer; width:100%;
+  }
+  .btn-doc:active{opacity:0.85;}
+  .btn-doc.orcamento{background:var(--gold); color:var(--navy);}
+  .btn-doc.diagnostico{background:var(--blue-mid);}
+  .seta-expandir{font-size:11px; color:var(--ink-soft); text-align:center; margin-top:2px;}
+  .info-extra{margin-top:12px; padding-top:12px; border-top:1px solid var(--border);}
+  .info-linha{display:flex; justify-content:space-between; gap:10px; font-size:12.5px; margin-bottom:6px;}
+  .info-linha .k{color:var(--ink-soft);}
+  .info-linha .v{font-weight:600; text-align:right;}
+  .garantia-box{
+    display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px;
+    font-size:12px; font-weight:700; margin-top:6px; margin-bottom:2px;
+  }
+  .garantia-ok{background:#E7F5EC; color:var(--green-ok);}
+  .garantia-vencida{background:#FDEEEC; color:var(--red-no);}
+  .garantia-sem{background:#EDEFF2; color:#6B7280;}
+  .garantia-pendente{background:#FFF8E1; color:#8A6D00;}
+  .historico-titulo{font-size:11.5px; font-weight:700; color:var(--ink-soft); margin:10px 0 6px; text-transform:uppercase;}
+  .historico-item{display:flex; gap:8px; font-size:12px; margin-bottom:5px; align-items:baseline; flex-wrap:wrap;}
+  .historico-item .bolinha{width:6px; height:6px; border-radius:50%; background:var(--blue-mid); flex-shrink:0;}
+  .historico-item .data-hist{color:var(--ink-soft); min-width:130px;}
+  .secao-titulo{font-size:13px; font-weight:800; color:var(--navy); margin:20px 0 10px; text-transform:uppercase; letter-spacing:0.3px;}
+  .card-agenda{
+    background:#fff; border:1px solid var(--border); border-left:4px solid var(--gold); border-radius:10px;
+    padding:13px 15px; margin-bottom:10px; box-shadow:0 2px 8px rgba(15,44,72,0.06);
+  }
+  .card-agenda .ag-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;}
+  .card-agenda .ag-data{font-weight:800; color:var(--navy); font-size:13.5px;}
+  .card-agenda .ag-titulo{font-size:13px; color:var(--ink);}
+  .card-agenda .ag-local{font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
+  .card-diag{
+    background:#fff; border:1px solid var(--border); border-left:4px solid var(--blue-mid); border-radius:10px;
+    padding:13px 15px; margin-bottom:10px; box-shadow:0 2px 8px rgba(15,44,72,0.06);
+  }
+  .card-diag .diag-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;}
+  .card-diag .diag-numero{font-weight:800; color:var(--navy); font-size:13.5px;}
+  .card-diag .diag-data{font-size:11.5px; color:var(--ink-soft);}
+  .card-diag .diag-equip{font-size:13px; font-weight:600; color:var(--ink); margin-top:2px;}
+  .card-diag .diag-relato{font-size:12px; color:var(--ink-soft); margin-top:4px; line-height:1.4;}
+  .card-diag .diag-status{font-size:12px; color:var(--blue-mid); margin-top:8px; background:var(--blue-bg); padding:8px 10px; border-radius:8px; line-height:1.4;}
+  .card-diag .diag-prazo{font-size:12px; color:var(--ink); margin-top:6px;}
+  .card-diag .diag-urgencia{font-size:11.5px; color:#8A6D00; margin-top:6px; background:#FFF8E1; padding:8px 10px; border-radius:8px; line-height:1.4;}
+  .orc-status-enviado{background:#E7F5EC; color:var(--green-ok);}
+  .orc-status-recusado{background:#FDEEEC; color:var(--red-no);}
+  .orc-valores{display:flex; gap:16px; margin-top:8px;}
+  .orc-valores .k{display:block; font-size:10.5px; color:var(--ink-soft); text-transform:uppercase;}
+  .orc-valores .v{display:block; font-size:14px; font-weight:800; color:var(--navy);}
+  .diag-origem-titulo{font-size:12px; font-weight:800; color:var(--blue-mid); margin-bottom:4px;}
+  .diag-divisor{border-top:1px dashed var(--border); margin:10px 0;}
+  .orc-itens-titulo{font-size:10.5px; font-weight:800; color:var(--ink-soft); text-transform:uppercase; margin-top:8px;}
+  .orc-itens-lista{margin:4px 0 0; padding-left:18px; font-size:12.5px; color:var(--ink);}
+  .orc-itens-lista li{margin-bottom:2px;}
+  .orc-linha-extra{font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .sem-docs{font-size:11.5px; color:var(--ink-soft); text-align:center; padding:6px 0;}
+  .doc-pendente{font-size:11.5px; color:#8A6D00; text-align:center; padding:9px; background:#FFF8E1; border-radius:8px;}
+  .faixa-tema{text-align:center; font-size:12.5px; font-weight:700; padding:7px; color:#fff;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <img src="data:image/png;base64,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" alt="LontraHelp" />
+  <div class="brand">LONTRA<span class="help">HELP</span></div>
+  <div class="sub">MONTAGEM E FORMATAÇÃO</div>
+</div>
+<div id="faixa-tema-container"></div>
+<div class="wrap" id="conteudo">
+  <div class="empty">
+    <div class="spinner"></div>
+    Carregando...
+  </div>
+</div>
+
+<script>
+// ---------------------------------------------------------------------
+// Temas sazonais — troca as cores do portal sozinho, baseado na data de hoje, cobrindo as
+// campanhas de conscientização (meses coloridos) e os feriados nacionais. Cada tema tem de 2
+// a 3 mensagens diferentes, escolhidas por sorteio a cada visita. Os feriados de UM DIA SÓ
+// ficam checados PRIMEIRO na lista — assim, se um feriado cair no meio de um mês de campanha,
+// o feriado "ganha" só naquele dia específico, sem precisar recortar as datas manualmente.
+// Dá pra também forçar um tema manualmente (ignorando a data), configurável no sistema.
+// ---------------------------------------------------------------------
+
+function ajustarCor(hex, fator){
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  const ajustar = (v)=> fator < 0 ? Math.round(v * (1+fator)) : Math.round(v + (255-v)*fator);
+  const nR = Math.max(0, Math.min(255, ajustar(r)));
+  const nG = Math.max(0, Math.min(255, ajustar(g)));
+  const nB = Math.max(0, Math.min(255, ajustar(b)));
+  return '#' + [nR,nG,nB].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+function montarTema(id, periodoFn, corOficial, mensagens){
+  return {
+    id, periodo: periodoFn, mensagens,
+    cores: {
+      navy: ajustarCor(corOficial, -0.55),
+      navyDark: ajustarCor(corOficial, -0.68),
+      navyDarker: ajustarCor(corOficial, -0.80),
+      gold: corOficial,
+    },
+  };
+}
+
+const TEMAS_SAZONAIS_DISPONIVEIS = [
+  {id:'jan_branco', label:'Janeiro Branco (saúde mental)'},
+  {id:'jan_roxo', label:'Janeiro Roxo (hanseníase)'},
+  {id:'fev_roxo', label:'Fevereiro Roxo (lúpus/Alzheimer/fibromialgia)'},
+  {id:'fev_laranja', label:'Fevereiro Laranja (leucemia)'},
+  {id:'mar_amarelo', label:'Março Amarelo (endometriose)'},
+  {id:'mar_azulmarinho', label:'Março Azul-Marinho (câncer colorretal)'},
+  {id:'dia_mulher', label:'08/03 — Dia da Mulher'},
+  {id:'abr_azul', label:'Abril Azul (autismo)'},
+  {id:'abr_verde', label:'Abril Verde (segurança no trabalho)'},
+  {id:'tiradentes', label:'21/04 — Tiradentes'},
+  {id:'mai_amarelo', label:'Maio Amarelo (trânsito)'},
+  {id:'dia_trabalhador', label:'01/05 — Dia do Trabalhador'},
+  {id:'jun_vermelho', label:'Junho Vermelho (doação de sangue)'},
+  {id:'jun_verde', label:'Junho Verde (meio ambiente)'},
+  {id:'jul_amarelo', label:'Julho Amarelo (hepatites virais)'},
+  {id:'jul_verde', label:'Julho Verde (câncer de cabeça/pescoço)'},
+  {id:'ago_lilas', label:'Agosto Lilás (violência contra a mulher)'},
+  {id:'ago_dourado', label:'Agosto Dourado (aleitamento materno)'},
+  {id:'set_amarelo', label:'Setembro Amarelo (prevenção ao suicídio)'},
+  {id:'independencia', label:'07/09 — Independência do Brasil'},
+  {id:'out_rosa', label:'Outubro Rosa (câncer de mama)'},
+  {id:'aparecida', label:'12/10 — Nossa Senhora Aparecida'},
+  {id:'nov_azul', label:'Novembro Azul (câncer de próstata)'},
+  {id:'consciencia_negra', label:'20/11 — Consciência Negra'},
+  {id:'finados', label:'02/11 — Finados'},
+  {id:'proclamacao_republica', label:'15/11 — Proclamação da República'},
+  {id:'dez_vermelho', label:'Dezembro Vermelho (AIDS)'},
+  {id:'natal', label:'Natal'},
+  {id:'anoNovo', label:'Ano Novo'},
+];
+
+function aplicarTemaSazonal(temaForcado){
+  const hoje = new Date();
+  const mes = hoje.getMonth()+1;
+  const dia = hoje.getDate();
+
+  const dentroDoPeriodo = (mesIni, diaIni, mesFim, diaFim)=>{
+    const valor = mes*100+dia;
+    const ini = mesIni*100+diaIni;
+    const fim = mesFim*100+diaFim;
+    return ini <= fim ? (valor >= ini && valor <= fim) : (valor >= ini || valor <= fim);
+  };
+  const noDia = (m, d)=> mes===m && dia===d;
+  const T = (id, ini, fim, cor, msgs)=> montarTema(id, ()=>dentroDoPeriodo(ini[0],ini[1],fim[0],fim[1]), cor, msgs);
+  const D = (id, m, d, cor, msgs)=> montarTema(id, ()=>noDia(m,d), cor, msgs);
+
+  const feriados = [
+    D('dia_mulher', 3, 8, '#C2185B', ['💐 Feliz Dia Internacional da Mulher! Que seu dia seja tão especial quanto você.']),
+    D('tiradentes', 4, 21, '#046A38', ['🇧🇷 21 de abril — Dia de Tiradentes.']),
+    D('dia_trabalhador', 5, 1, '#2E86C1', ['👷 1º de maio — Feliz Dia do Trabalhador!']),
+    D('independencia', 9, 7, '#2E7D32', ['🇧🇷 7 de setembro — Independência do Brasil!']),
+    D('aparecida', 10, 12, '#8E44AD', ['🙏 12 de outubro — Dia de Nossa Senhora Aparecida.']),
+    D('finados', 11, 2, '#5D6D7E', ['🕯️ 2 de novembro — Dia de Finados.']),
+    D('consciencia_negra', 11, 20, '#6E2C00', ['✊🏾 20 de novembro — Dia da Consciência Negra.']),
+    D('proclamacao_republica', 11, 15, '#1A5276', ['🇧🇷 15 de novembro — Proclamação da República.']),
+  ];
+
+  const campanhas = [
+    T('jan_branco', [1,1],[1,31], '#B0AEC2', [
+      'Janeiro Branco 🤍 — cuidar da saúde mental também é se cuidar.',
+      'Janeiro Branco 🤍 — vale a pena parar, respirar, e cuidar de como você está por dentro.',
+    ]),
+    T('jan_roxo', [1,1],[1,31], '#6A3D9A', [
+      'Janeiro Roxo 💜 — conscientização e combate à hanseníase.',
+      'Janeiro Roxo 💜 — quanto mais cedo o diagnóstico, mais fácil o tratamento.',
+    ]),
+    T('fev_roxo', [2,1],[2,28], '#8E44AD', [
+      'Fevereiro Roxo 💜 — conscientização sobre lúpus, Alzheimer e fibromialgia.',
+      'Fevereiro Roxo 💜 — informação é cuidado. Fica de olho na sua saúde e na de quem você ama.',
+    ]),
+    T('fev_laranja', [2,1],[2,28], '#F39C12', [
+      'Fevereiro Laranja 🧡 — combate e prevenção à leucemia.',
+      'Fevereiro Laranja 🧡 — o diagnóstico precoce salva vidas.',
+    ]),
+    T('mar_amarelo', [3,1],[3,31], '#F4D03F', [
+      'Março Amarelo 💛 — conscientização sobre a endometriose.',
+      'Março Amarelo 💛 — dor não é normal. Procure ajuda, se cuide.',
+    ]),
+    T('mar_azulmarinho', [3,1],[3,31], '#1B2A4A', [
+      'Março Azul-Marinho 💙 — prevenção ao câncer colorretal.',
+      'Março Azul-Marinho 💙 — exames em dia são a melhor prevenção.',
+    ]),
+    T('abr_azul', [4,1],[4,30], '#2E86C1', [
+      'Abril Azul 💙 — conscientização sobre o autismo.',
+      'Abril Azul 💙 — mais empatia, mais inclusão, todos os dias.',
+    ]),
+    T('abr_verde', [4,1],[4,30], '#27AE60', [
+      'Abril Verde 💚 — segurança e saúde no trabalho.',
+      'Abril Verde 💚 — cuidar de quem trabalha é cuidar do futuro.',
+    ]),
+    T('mai_amarelo', [5,1],[5,31], '#F1C40F', [
+      'Maio Amarelo 💛 — atenção e cuidado no trânsito, sempre.',
+      'Maio Amarelo 💛 — no trânsito, a pressa é sua pior conselheira.',
+    ]),
+    T('jun_vermelho', [6,1],[6,30], '#C0392B', [
+      'Junho Vermelho ❤️ — incentivo à doação de sangue.',
+      'Junho Vermelho ❤️ — uma doação pode salvar até 4 vidas.',
+    ]),
+    T('jun_verde', [6,1],[6,30], '#1E8449', [
+      'Junho Verde 💚 — conscientização ambiental e preservação.',
+      'Junho Verde 💚 — pequenas atitudes fazem grande diferença pro planeta.',
+    ]),
+    T('jul_amarelo', [7,1],[7,31], '#F4D03F', [
+      'Julho Amarelo 💛 — luta contra as hepatites virais.',
+      'Julho Amarelo 💛 — se testar é se cuidar.',
+    ]),
+    T('jul_verde', [7,1],[7,31], '#229954', [
+      'Julho Verde 💚 — prevenção do câncer de cabeça e pescoço.',
+      'Julho Verde 💚 — check-ups regulares fazem toda diferença.',
+    ]),
+    T('ago_lilas', [8,1],[8,31], '#BB8FCE', [
+      'Agosto Lilás 💜 — combate à violência contra a mulher.',
+      'Agosto Lilás 💜 — nenhuma mulher deve enfrentar isso sozinha.',
+    ]),
+    T('ago_dourado', [8,1],[8,31], '#D4AC0D', [
+      'Agosto Dourado 💛 — estímulo ao aleitamento materno.',
+      'Agosto Dourado 💛 — cada gesto de cuidado conta.',
+    ]),
+    T('set_amarelo', [9,1],[9,30], '#F1C40F', [
+      'Setembro Amarelo 💛 — a vida vale a pena ser vivida. Conversar salva vidas.',
+      'Setembro Amarelo 💛 — se precisar, procure ajuda. Você não está sozinho(a).',
+    ]),
+    T('out_rosa', [10,1],[10,31], '#EC407A', [
+      'Outubro Rosa 💗 — prevenção e combate ao câncer de mama.',
+      'Outubro Rosa 💗 — o autoexame e a mamografia são suas maiores aliadas.',
+      'Outubro Rosa 💗 — se cuidar é um ato de amor-próprio.',
+    ]),
+    T('nov_azul', [11,1],[11,30], '#1A5276', [
+      'Novembro Azul 💙 — saúde do homem e prevenção ao câncer de próstata.',
+      'Novembro Azul 💙 — coragem é cuidar da própria saúde.',
+      'Novembro Azul 💙 — fazer o check-up é sinal de força, não de fraqueza.',
+    ]),
+    T('dez_vermelho', [12,1],[12,20], '#B71C1C', [
+      'Dezembro Vermelho ❤️ — prevenção e combate à AIDS.',
+      'Dezembro Vermelho ❤️ — o preservativo continua sendo a melhor proteção.',
+    ]),
+    T('natal', [12,21],[12,25], '#0F4C3A', [
+      '🎄 Boas festas! Feliz Natal, da equipe LontraHelp 🎄',
+      '🎄 Que seu Natal seja repleto de paz e boas energias! 🎄',
+    ]),
+    T('anoNovo', [12,26],[1,6], '#1A1A2E', [
+      '✨ Feliz Ano Novo! Que venha com tudo de bom ✨',
+      '✨ Um ano novo cheio de conquistas pra você! ✨',
+    ]),
+  ];
+
+  const todosOsTemas = [...feriados, ...campanhas];
+
+  let temaEscolhido = null;
+  if(temaForcado){
+    temaEscolhido = todosOsTemas.find(t => t.id === temaForcado) || null;
+  }
+  if(!temaEscolhido){
+    temaEscolhido = todosOsTemas.find(t => t.periodo());
+  }
+  if(!temaEscolhido) return;
+
+  const mensagemSorteada = temaEscolhido.mensagens[Math.floor(Math.random()*temaEscolhido.mensagens.length)];
+
+  const raiz = document.documentElement.style;
+  raiz.setProperty('--navy', temaEscolhido.cores.navy);
+  raiz.setProperty('--navy-dark', temaEscolhido.cores.navyDark);
+  raiz.setProperty('--navy-darker', temaEscolhido.cores.navyDarker);
+  raiz.setProperty('--gold', temaEscolhido.cores.gold);
+
+  const faixaContainer = document.getElementById('faixa-tema-container');
+  if(faixaContainer){
+    faixaContainer.innerHTML = '<div class="faixa-tema" style="background:' + temaEscolhido.cores.navy + ';">' + mensagemSorteada + '</div>';
+  }
+}
+
+const STATUS_LABELS = {
+  em_andamento: 'Em andamento', em_analise: 'Em análise', esperando_peca: 'Esperando peça',
+  manutencao: 'Em manutenção', aguardando_aprovacao: 'Aguardando aprovação do cliente',
+  concluido: 'Concluído', pendente_pagamento: 'Pendente pagamento',
+  cancelado: 'Cancelado pelo cliente', arquivado: 'Arquivado (pausado)',
+};
+const STATUS_PILL = {
+  em_andamento: 'pill-blue', em_analise: 'pill-blue', esperando_peca: 'pill-gold',
+  manutencao: 'pill-blue', aguardando_aprovacao: 'pill-gold', concluido: 'pill-green',
+  pendente_pagamento: 'pill-gold', cancelado: 'pill-red', arquivado: 'pill-gray',
+};
+const NOME_DOC = {recibo: '🧾 Baixar Recibo', orcamento: '📋 Baixar Orçamento', diagnostico: '🔍 Baixar Diagnóstico'};
+
+let OWNER_REPO = null;
+function detectarOwnerRepo(){
+  if(OWNER_REPO) return OWNER_REPO;
+  const host = window.location.hostname;
+  const owner = host.split('.')[0];
+  const partesCaminho = window.location.pathname.split('/').filter(Boolean);
+  const repo = partesCaminho[0] || '';
+  OWNER_REPO = {owner, repo};
+  return OWNER_REPO;
+}
+function urlBrutaGithub(caminhoRelativo){
+  const {owner, repo} = detectarOwnerRepo();
+  return 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/main/' + caminhoRelativo;
+}
+
+function formatDateBR(iso){
+  if(!iso) return '—';
+  const [ano,mes,dia] = iso.split('-');
+  return dia + '/' + mes + '/' + ano;
+}
+function formatMoney(v){
+  const n = parseFloat(v);
+  if(isNaN(n)) return '0,00';
+  return n.toFixed(2).replace('.', ',');
+}
+function escaparHtml(s){
+  const div = document.createElement('div');
+  div.textContent = s == null ? '' : String(s);
+  return div.innerHTML;
+}
+function pegarClienteId(){
+  return new URLSearchParams(window.location.search).get('cliente');
+}
+function decodificarDadosDoHash(){
+  const hash = window.location.hash || '';
+  const m = hash.match(/#d=(.+)/);
+  if(!m) return null;
+  try{
+    let b64 = m[1].replace(/-/g,'+').replace(/_/g,'/');
+    const pad = b64.length % 4 === 0 ? '' : '='.repeat(4 - (b64.length % 4));
+    return JSON.parse(decodeURIComponent(escape(atob(b64 + pad))));
+  }catch(e){ return null; }
+}
+function renderizarErro(mensagem){
+  document.getElementById('conteudo').innerHTML = '<div class="empty"><div class="ic">😕</div>' + escaparHtml(mensagem) + '</div>';
+}
+
+function toggleCard(idx){
+  const el = document.getElementById('docs-' + idx);
+  if(el) el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+}
+window.toggleCard = toggleCard;
+
+function limparNomeArquivo(texto){
+  return texto
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+function montarNomeArquivo(tipo, nomeCliente, numeroOS){
+  const rotulos = {recibo: 'Recibo', orcamento: 'Orcamento', diagnostico: 'Diagnostico'};
+  return limparNomeArquivo(`${rotulos[tipo]}_OS_${numeroOS}_${nomeCliente}`) + '.pdf';
+}
+
+function somarDias(isoData, dias){
+  const d = new Date(isoData + 'T00:00:00');
+  d.setDate(d.getDate() + (parseInt(dias)||0));
+  const ano = d.getFullYear(), mes = String(d.getMonth()+1).padStart(2,'0'), dia = String(d.getDate()).padStart(2,'0');
+  return `${ano}-${mes}-${dia}`;
+}
+function hojeISO(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function diasEntre(isoInicio, isoFim){
+  const a = new Date(isoInicio + 'T00:00:00'), b = new Date(isoFim + 'T00:00:00');
+  return Math.round((b - a) / 86400000);
+}
+
+// Monta o bloco de "detalhes" que aparece quando o card é aberto: equipamento, situação da
+// garantia (quantos dias faltam, ou se já venceu), e o histórico de quando o status mudou.
+function montarInfoExtra(o){
+  let html = '<div class="info-extra">';
+
+  if(o.eq){
+    html += '<div class="info-linha"><span class="k">Equipamento</span><span class="v">' + escaparHtml(o.eq) + '</span></div>';
+  }
+
+  if(o.g === null){
+    html += '<div class="garantia-box garantia-sem">➖ Esse serviço não possui garantia</div>';
+  } else if(o.g && o.g.pendente){
+    html += '<div class="garantia-box garantia-pendente">⏳ A garantia começa a valer quando o serviço for concluído e o equipamento entregue</div>';
+  } else if(o.g && o.g.inicio){
+    const hoje = hojeISO();
+    [['fisica','Física (montagem/reparo)'], ['software','Software/configurações']].forEach(([campo, rotulo])=>{
+      const dias = o.g[campo];
+      if(!dias) return;
+      const fimIso = somarDias(o.g.inicio, dias);
+      const restam = diasEntre(hoje, fimIso);
+      if(restam >= 0){
+        html += '<div class="garantia-box garantia-ok">✔ Garantia ' + rotulo + ': faltam ' + restam + ' dia(s) (até ' + formatDateBR(fimIso) + ')</div>';
+      } else {
+        html += '<div class="garantia-box garantia-vencida">✘ Garantia ' + rotulo + ' venceu em ' + formatDateBR(fimIso) + '</div>';
+      }
+    });
+  }
+
+  if(o.h && o.h.length > 0){
+    html += '<div class="historico-titulo">Histórico</div>';
+    o.h.slice().reverse().forEach(ev=>{
+      const label = STATUS_LABELS[ev.s] || ev.s;
+      let dataFormatada = '—';
+      try{
+        const dataObj = new Date(ev.d);
+        dataFormatada = dataObj.toLocaleDateString('pt-BR') + ' às ' + dataObj.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){}
+      html += '<div class="historico-item"><span class="bolinha"></span><span class="data-hist">' + dataFormatada + '</span><span>' + escaparHtml(label) + '</span></div>';
+    });
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// Baixa o PDF "por dentro" via JavaScript (busca os bytes e cria um link temporário local) —
+// assim o navegador respeita o nome do arquivo escolhido. Um link direto pra um endereço de outro
+// site (o GitHub, nesse caso) faz o navegador ignorar o nome e salvar com um nome genérico.
+async function baixarComNomeCerto(url, nomeArquivo, botaoEl){
+  const textoOriginal = botaoEl.textContent;
+  botaoEl.disabled = true;
+  botaoEl.textContent = '⏳ Baixando...';
+  try{
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Não consegui baixar o arquivo (' + resp.status + ').');
+    const blob = await resp.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = nomeArquivo;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(()=> URL.revokeObjectURL(blobUrl), 3000);
+  }catch(e){
+    alert('Não consegui baixar esse documento agora. Tenta de novo em instantes.\n\nDetalhe: ' + e.message);
+  }finally{
+    botaoEl.disabled = false;
+    botaoEl.textContent = textoOriginal;
+  }
+}
+window.baixarComNomeCerto = baixarComNomeCerto;
+
+function renderizarDados(dados){
+  const el = document.getElementById('conteudo');
+  const ordens = (dados.o || []).slice().sort((a,b)=> (b.d||'').localeCompare(a.d||''));
+  const agendamentos = (dados.a || [])
+    .filter(a => a.s === 'agendado')
+    .slice()
+    .sort((a,b)=> (a.d+a.h).localeCompare(b.d+b.h));
+
+  let html = '<div class="saudacao">Olá, <strong>' + escaparHtml(dados.c || 'Cliente') + '</strong>! Aqui está o histórico dos seus atendimentos:</div>';
+  if(dados.atualizadoEm){
+    try{ html += '<div class="atualizado-em">Atualizado em ' + new Date(dados.atualizadoEm).toLocaleString('pt-BR') + '</div>'; }catch(e){}
+  }
+
+  const diagnosticosPendentes = dados.diag || [];
+  if(diagnosticosPendentes.length > 0){
+    html += '<div class="secao-titulo">🔍 Em análise</div>';
+    diagnosticosPendentes.forEach(d=>{
+      const nomeArquivoDiag = limparNomeArquivo(`Diagnostico_${d.numero}_${dados.c}`) + '.pdf';
+      html += '<div class="card-diag">'
+        + '<div class="diag-top"><span class="diag-numero">Diagnóstico ' + escaparHtml(d.numero||'') + '</span><span class="diag-data">' + formatDateBR(d.data) + '</span></div>'
+        + (d.equipamento ? '<div class="diag-equip">' + escaparHtml(d.equipamento) + '</div>' : '')
+        + (d.relato ? '<div class="diag-relato">' + escaparHtml(d.relato) + '</div>' : '')
+        + '<div class="diag-status">🕐 Equipamento em análise — ainda não tem um valor fechado, estamos avaliando com calma pra te passar o diagnóstico certinho.</div>'
+        + (d.prazo ? '<div class="diag-prazo">📆 Previsão de retorno com o diagnóstico: <strong>' + formatDateBR(d.prazo) + '</strong></div>' : '')
+        + (d.temUrgencia ? '<div class="diag-urgencia">⚡ Precisa com mais pressa? Tem opção de análise prioritária, com uma taxa adicional de R$ ' + (d.taxaUrgencia||0).toFixed(2).replace('.',',') + ' — é só chamar pra combinar.</div>' : '')
+        + (d.docPath ? '<button type="button" class="btn-doc diagnostico" onclick="baixarComNomeCerto(\'' + urlBrutaGithub(d.docPath) + '\', \'' + nomeArquivoDiag.replace(/'/g,"\\'") + '\', this)">🔍 Baixar Diagnóstico</button>' : '')
+      + '</div>';
+    });
+  }
+
+  const ORC_STATUS_LABEL = {
+    em_preparo: {texto: '🛠️ Em preparo — buscando a melhor opção custo-benefício pra você.', classe:'orc-status-preparo'},
+    analise_final: {texto: '🔎 Em análise final antes de te enviar.', classe:'orc-status-preparo'},
+    enviado: {texto: '📤 Enviado — aguardando sua aprovação.', classe:'orc-status-enviado'},
+    aprovado: {texto: '✔ Aprovado.', classe:'orc-status-enviado'},
+    recusado: {texto: '✕ Recusado.', classe:'orc-status-recusado'},
+  };
+  const orcamentosPendentes = dados.orc || [];
+  if(orcamentosPendentes.length > 0){
+    html += '<div class="secao-titulo">💰 Orçamentos</div>';
+    orcamentosPendentes.forEach(o=>{
+      const statusInfo = ORC_STATUS_LABEL[o.status] || ORC_STATUS_LABEL.em_preparo;
+      let cardHtml = '<div class="card-diag">';
+
+      // Se esse orçamento veio de um diagnóstico, mostra ele primeiro — a "história completa"
+      // de onde esse orçamento surgiu, antes dos valores em si.
+      if(o.diagnostico){
+        cardHtml += '<div class="diag-origem-titulo">🔍 Diagnóstico ' + escaparHtml(o.diagnostico.numero||'') + ' — ' + formatDateBR(o.diagnostico.data) + '</div>';
+        if(o.diagnostico.equipamento) cardHtml += '<div class="diag-equip">' + escaparHtml(o.diagnostico.equipamento) + '</div>';
+        if(o.diagnostico.relato) cardHtml += '<div class="diag-relato"><strong>Relatado:</strong> ' + escaparHtml(o.diagnostico.relato) + '</div>';
+        if(o.diagnostico.conclusao) cardHtml += '<div class="diag-relato"><strong>Diagnóstico:</strong> ' + escaparHtml(o.diagnostico.conclusao) + '</div>';
+        if(o.diagnostico.recomendacao) cardHtml += '<div class="diag-relato"><strong>Recomendação:</strong> ' + escaparHtml(o.diagnostico.recomendacao) + '</div>';
+        if(o.diagnostico.docPath){
+          const nomeArquivoDiagOrigem = limparNomeArquivo(`Diagnostico_${o.diagnostico.numero}_${dados.c}`) + '.pdf';
+          cardHtml += '<button type="button" class="btn-doc diagnostico" onclick="baixarComNomeCerto(\'' + urlBrutaGithub(o.diagnostico.docPath) + '\', \'' + nomeArquivoDiagOrigem.replace(/'/g,"\\'") + '\', this)">🔍 Baixar Diagnóstico</button>';
+        }
+        cardHtml += '<div class="diag-divisor"></div>';
+      }
+
+      cardHtml += '<div class="diag-top"><span class="diag-numero">Orçamento ' + escaparHtml(o.numero||'') + '</span><span class="diag-data">' + formatDateBR(o.data) + '</span></div>'
+        + '<div class="diag-status ' + statusInfo.classe + '">' + statusInfo.texto + '</div>';
+
+      // Lista dos produtos/itens do orçamento — o que exatamente está sendo cobrado.
+      if(o.itens && o.itens.length > 0){
+        cardHtml += '<div class="orc-itens-titulo">Itens</div><ul class="orc-itens-lista">';
+        o.itens.forEach(it=>{
+          cardHtml += '<li>' + escaparHtml(it.descricao) + (it.quantidade>1 ? ' (x' + it.quantidade + ')' : '') + ' — R$ ' + (it.valorUnitario||0).toFixed(2).replace('.',',') + '</li>';
+        });
+        cardHtml += '</ul>';
+      }
+      if(o.maoDeObra > 0){
+        cardHtml += '<div class="orc-linha-extra">Mão de obra: R$ ' + o.maoDeObra.toFixed(2).replace('.',',') + '</div>';
+      }
+      if(o.frete > 0){
+        cardHtml += '<div class="orc-linha-extra">Frete: R$ ' + o.frete.toFixed(2).replace('.',',') + '</div>';
+      }
+
+      cardHtml += '<div class="orc-valores">'
+          + '<div><span class="k">À vista</span><span class="v">R$ ' + (o.totalAVista||0).toFixed(2).replace('.',',') + '</span></div>'
+          + (!o.semParcelamento && o.parcelas > 1 ? '<div><span class="k">Parcelado</span><span class="v">' + o.parcelas + 'x de R$ ' + ((o.totalParcelado||0)/o.parcelas).toFixed(2).replace('.',',') + '</span></div>' : '')
+        + '</div>';
+
+      if(o.observacoes) cardHtml += '<div class="diag-relato" style="margin-top:8px;">' + escaparHtml(o.observacoes) + '</div>';
+      if(o.validadeDias && o.status==='enviado') cardHtml += '<div class="diag-prazo">⏳ Válido por ' + o.validadeDias + ' dia(s) a partir do envio.</div>';
+      if(o.docPath){
+        const nomeArquivoOrc = limparNomeArquivo(`Orcamento_${o.numero}_${dados.c}`) + '.pdf';
+        cardHtml += '<button type="button" class="btn-doc orcamento" onclick="baixarComNomeCerto(\'' + urlBrutaGithub(o.docPath) + '\', \'' + nomeArquivoOrc.replace(/'/g,"\\'") + '\', this)">📋 Baixar Orçamento</button>';
+      }
+
+      cardHtml += '</div>';
+      html += cardHtml;
+    });
+  }
+
+  if(agendamentos.length > 0){
+    html += '<div class="secao-titulo">📅 Próximas visitas marcadas</div>';
+    agendamentos.forEach(a=>{
+      html += '<div class="card-agenda">'
+        + '<div class="ag-top"><span class="ag-data">' + formatDateBR(a.d) + ' às ' + escaparHtml(a.h||'') + '</span></div>'
+        + '<div class="ag-titulo">' + escaparHtml(a.t) + '</div>'
+        + (a.l ? '<div class="ag-local">📍 ' + escaparHtml(a.l) + '</div>' : '')
+      + '</div>';
+    });
+    html += '<div class="secao-titulo">🧾 Ordens de serviço</div>';
+  }
+
+  if(ordens.length === 0){
+    html += '<div class="empty"><div class="ic">🧾</div>Nenhuma ordem de serviço encontrada.</div>';
+  } else {
+    ordens.forEach((o, idx)=>{
+      const statusLabel = STATUS_LABELS[o.s] || o.s || 'Em andamento';
+      const statusPill = STATUS_PILL[o.s] || 'pill-blue';
+      const docs = o.docs || {};
+      const temAlgumDoc = docs.recibo || docs.orcamento || docs.diagnostico;
+
+      let botoesDocs = '';
+      ['recibo','orcamento','diagnostico'].forEach(tipo=>{
+        if(!docs[tipo]) return;
+        if(tipo==='recibo' && !o.assinado){
+          // Recibo só vale de verdade depois de assinado pelo cliente — antes disso, é só um
+          // rascunho, não libera pra download aqui no portal.
+          botoesDocs += '<div class="doc-pendente">⏳ Recibo aguardando assinatura — ainda não disponível pra download</div>';
+          return;
+        }
+        const nomeArquivo = montarNomeArquivo(tipo, dados.c, o.n);
+        botoesDocs += '<button type="button" class="btn-doc ' + tipo + '" onclick="event.stopPropagation(); baixarComNomeCerto(\'' + urlBrutaGithub(docs[tipo]) + '\', \'' + nomeArquivo.replace(/'/g,"\\'") + '\', this)">' + NOME_DOC[tipo] + (tipo==='recibo' ? ' ✔' : '') + '</button>';
+      });
+      if(!temAlgumDoc) botoesDocs = '<div class="sem-docs">Nenhum documento disponível pra essa OS ainda.</div>';
+
+      const infoExtra = montarInfoExtra(o);
+
+      html += '<div class="card" onclick="toggleCard(' + idx + ')">'
+        + '<div class="card-top">'
+          + '<div><div class="os-num">OS #' + escaparHtml(o.n) + '</div><div class="os-data">' + formatDateBR(o.d) + '</div></div>'
+          + '<span class="pill ' + statusPill + '">' + escaparHtml(statusLabel) + '</span>'
+        + '</div>'
+        + '<div class="titulo">' + escaparHtml(o.t || 'Serviço') + '</div>'
+        + '<div class="rodape-card"><span style="font-size:11.5px; color:var(--ink-soft);">Valor</span><span class="valor">R$ ' + formatMoney(o.v) + '</span></div>'
+        + '<div class="seta-expandir">👆 Toque pra ver os detalhes</div>'
+        + '<div class="docs-expandido" id="docs-' + idx + '" style="display:none;">' + infoExtra + botoesDocs + '</div>'
+      + '</div>';
+    });
+  }
+
+  html += '<div class="footer-contato">'
+    + 'LontraHelp — Montagem e Formatação<br/>'
+    + '<a href="https://wa.me/5581986234860" target="_blank">📱 (81) 9 8623-4860</a> &nbsp;|&nbsp; @lontrahelp'
+  + '</div>';
+
+  el.innerHTML = html;
+}
+
+function renderizarTelaBoasVindas(dados, clienteId){
+  const el = document.getElementById('conteudo');
+  const primeiroNome = (dados.c||'').split(' ')[0] || '';
+  el.innerHTML = `
+    <div class="verif-box">
+      <div class="verif-icone" style="font-size:44px;">🦦</div>
+      <div class="verif-titulo">Bem-vindo ao seu histórico de ordem de serviço${primeiroNome ? ', ' + escaparHtml(primeiroNome) : ''}!</div>
+      <div class="verif-texto" style="margin-bottom:18px;">Aqui você encontrará todos os seus recibos, diagnósticos e ordens de serviço com a LontraHelp.</div>
+      <button type="button" class="verif-btn" id="boasvindas-btn">Entrar no meu histórico</button>
+    </div>
+  `;
+  document.getElementById('boasvindas-btn').addEventListener('click', ()=>{
+    renderizarTelaVerificacao(dados, clienteId);
+  });
+}
+
+function renderizarTelaVerificacao(dados, clienteId){
+  const el = document.getElementById('conteudo');
+  el.innerHTML = `
+    <div class="verif-box">
+      <div class="verif-icone">🔒</div>
+      <div class="verif-titulo">Confirme sua identidade</div>
+      <div class="verif-texto">Digite agora os <strong>últimos 4 números</strong> do seu telefone cadastrado, pra proteger seus dados.</div>
+      <input type="tel" inputmode="numeric" maxlength="4" id="verif-input" class="verif-input" placeholder="0000" autocomplete="off" />
+      <div class="verif-erro" id="verif-erro" style="display:none;">Números incorretos. Tenta de novo.</div>
+      <button type="button" class="verif-btn" id="verif-btn">Entrar</button>
+    </div>
+  `;
+  const input = document.getElementById('verif-input');
+  const erroEl = document.getElementById('verif-erro');
+  input.focus();
+
+  const tentar = ()=>{
+    const digitado = (input.value||'').trim();
+    if(digitado.length===4 && dados.v4 && digitado===dados.v4){
+      try{ sessionStorage.setItem('lh_verif_' + clienteId, '1'); }catch(e){}
+      renderizarDados(dados);
+    } else {
+      erroEl.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  };
+  document.getElementById('verif-btn').addEventListener('click', tentar);
+  input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') tentar(); });
+}
+
+async function iniciar(){
+  const clienteId = pegarClienteId();
+  if(clienteId){
+    const {owner, repo} = detectarOwnerRepo();
+    if(!owner || !repo){ renderizarErro('Não consegui identificar o repositório. Peça pro técnico conferir a configuração.'); return; }
+    const url = 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/main/dados/' + encodeURIComponent(clienteId) + '.json?t=' + Date.now();
+    try{
+      const resp = await fetch(url, {cache: 'no-store'});
+      if(!resp.ok){
+        renderizarErro(resp.status === 404 ? 'Ainda não há dados pra esse link. Peça pro técnico gerar de novo.' : 'Não consegui carregar os dados agora. Tenta de novo em instantes.');
+        return;
+      }
+      const dados = await resp.json();
+      // Se não tiver os 4 dígitos configurados (link antigo, gerado antes dessa proteção existir),
+      // mostra os dados direto — não dá pra pedir uma verificação que não existe ainda.
+      let jaVerificado = false;
+      try{ jaVerificado = sessionStorage.getItem('lh_verif_' + clienteId) === '1'; }catch(e){}
+      if(!dados.v4 || jaVerificado){
+        renderizarDados(dados);
+      } else {
+        renderizarTelaBoasVindas(dados, clienteId);
+      }
+    }catch(e){
+      renderizarErro('Sem conexão ou erro ao carregar. Confere sua internet e tenta de novo.');
+    }
+    return;
+  }
+  const dadosAntigos = decodificarDadosDoHash();
+  if(dadosAntigos){ renderizarDados(dadosAntigos); return; }
+  renderizarErro('Link inválido ou incompleto. Peça pro técnico gerar o link de novo.');
+}
+
+// Antes de tudo, confere se tem um tema forçado manualmente configurado (arquivo pequeno,
+// separado dos dados de cada cliente) — se não tiver, ou der erro, segue com a detecção
+// automática por data normalmente, sem travar o carregamento do resto da página.
+async function iniciarComTema(){
+  let temaForcado = null;
+  try{
+    const resp = await fetch(urlBrutaGithub('config/tema.json') + '?t=' + Date.now(), {cache:'no-store'});
+    if(resp.ok){
+      const cfg = await resp.json();
+      temaForcado = cfg.temaForcado || null;
+    }
+  }catch(e){ /* sem configuração manual, segue com o automático mesmo */ }
+  aplicarTemaSazonal(temaForcado);
+  iniciar();
+}
+iniciarComTema();
+</script>
+</body>
+</html>
