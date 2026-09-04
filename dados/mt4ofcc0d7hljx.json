@@ -3,17 +3,42 @@
   "v4": "5858",
   "o": [
     {
+      "n": "1000004S5",
+      "s": "em_andamento",
+      "d": "2026-09-04",
+      "t": "Baseado no diagnóstico DIAG-100001TF:",
+      "v": 363.05,
+      "eq": "",
+      "assinado": false,
+      "g": {
+        "pendente": true,
+        "inicio": null,
+        "fisica": 90,
+        "software": 7
+      },
+      "h": [
+        {
+          "s": "em_andamento",
+          "d": "2026-09-04T18:03:24.916Z"
+        }
+      ],
+      "docs": {
+        "recibo": "dados/mt4ofcc0d7hljx/mtn9im43hjj7k8-recibo.pdf",
+        "orcamento": "dados/mt4ofcc0d7hljx/mtn9im43hjj7k8-orcamento.pdf"
+      }
+    },
+    {
       "n": "1000003LT",
-      "s": "pendente_pagamento",
+      "s": "concluido",
       "d": "2026-09-02",
       "t": "Realizar limpeza e revitalização da carcaça",
       "v": 120,
       "eq": "Notebook Dell",
       "assinado": false,
       "g": {
-        "pendente": true,
-        "inicio": null,
-        "fisica": 90,
+        "pendente": false,
+        "inicio": "2026-09-04",
+        "fisica": 30,
         "software": 0
       },
       "h": [
@@ -24,6 +49,14 @@
         {
           "s": "pendente_pagamento",
           "d": "2026-09-04T06:00:34.836Z"
+        },
+        {
+          "s": "pendente_pagamento",
+          "d": "2026-09-04T06:14:07.974Z"
+        },
+        {
+          "s": "concluido",
+          "d": "2026-09-04T18:03:17.363Z"
         }
       ],
       "docs": {
@@ -33,37 +66,6 @@
   ],
   "a": [],
   "diag": [],
-  "orc": [
-    {
-      "numero": "ORC-500001M8",
-      "data": "2026-09-04",
-      "status": "enviado",
-      "totalAVista": 363.05,
-      "totalParcelado": 363.05,
-      "parcelas": 1,
-      "semParcelamento": true,
-      "validadeDias": 7,
-      "maoDeObra": 60,
-      "frete": 0,
-      "itens": [
-        {
-          "descricao": "Bateria Para Dell Yrdd6 Inspiron",
-          "quantidade": 1,
-          "valorUnitario": 303.05
-        }
-      ],
-      "observacoes": "Baseado no diagnóstico DIAG-100001TF:\nRealizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)",
-      "docPath": "dados/mt4ofcc0d7hljx/orc-mtmh13zkhvp0z5.pdf",
-      "diagnostico": {
-        "numero": "DIAG-100001TF",
-        "data": "2026-09-04",
-        "equipamento": "Notebook Dell",
-        "relato": "",
-        "conclusao": "Ao realizar a limpeza, foi notado que a bateria estava inchada",
-        "recomendacao": "Realizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)",
-        "docPath": "dados/mt4ofcc0d7hljx/diag-mtmgxlshmm5jtp.pdf"
-      }
-    }
-  ],
-  "atualizadoEm": "2026-09-04T06:11:06.499Z"
+  "orc": [],
+  "atualizadoEm": "2026-09-04T18:04:18.218Z"
 }
