@@ -37,9 +37,27 @@
       "totalAVista": 363.05,
       "totalParcelado": 363.05,
       "parcelas": 1,
+      "semParcelamento": false,
       "validadeDias": 7,
-      "qtdItens": 1
+      "maoDeObra": 60,
+      "frete": 0,
+      "itens": [
+        {
+          "descricao": "Bat",
+          "quantidade": 1,
+          "valorUnitario": 303.05
+        }
+      ],
+      "observacoes": "Baseado no diagnóstico DIAG-100001TF:\nRealizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)",
+      "diagnostico": {
+        "numero": "DIAG-100001TF",
+        "data": "2026-09-04",
+        "equipamento": "Notebook Dell",
+        "relato": "",
+        "conclusao": "Ao realizar a limpeza, foi notado que a bateria estava inchada",
+        "recomendacao": "Realizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)"
+      }
     }
   ],
-  "atualizadoEm": "2026-09-04T05:11:31.259Z"
+  "atualizadoEm": "2026-09-04T05:39:30.426Z"
 }
