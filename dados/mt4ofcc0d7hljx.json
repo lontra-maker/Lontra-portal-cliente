@@ -37,7 +37,7 @@
       "totalAVista": 363.05,
       "totalParcelado": 363.05,
       "parcelas": 1,
-      "semParcelamento": false,
+      "semParcelamento": true,
       "validadeDias": 7,
       "maoDeObra": 60,
       "frete": 0,
@@ -59,5 +59,5 @@
       }
     }
   ],
-  "atualizadoEm": "2026-09-04T05:39:30.426Z"
+  "atualizadoEm": "2026-09-04T05:40:28.597Z"
 }
