@@ -4,7 +4,7 @@
   "o": [
     {
       "n": "1000003LT",
-      "s": "manutencao",
+      "s": "pendente_pagamento",
       "d": "2026-09-02",
       "t": "Realizar limpeza e revitalização da carcaça",
       "v": 120,
@@ -20,6 +20,10 @@
         {
           "s": "manutencao",
           "d": "2026-09-03T07:13:09.505Z"
+        },
+        {
+          "s": "pendente_pagamento",
+          "d": "2026-09-04T06:00:34.836Z"
         }
       ],
       "docs": {
@@ -49,15 +53,17 @@
         }
       ],
       "observacoes": "Baseado no diagnóstico DIAG-100001TF:\nRealizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)",
+      "docPath": "dados/mt4ofcc0d7hljx/orc-mtmh13zkhvp0z5.pdf",
       "diagnostico": {
         "numero": "DIAG-100001TF",
         "data": "2026-09-04",
         "equipamento": "Notebook Dell",
         "relato": "",
         "conclusao": "Ao realizar a limpeza, foi notado que a bateria estava inchada",
-        "recomendacao": "Realizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)"
+        "recomendacao": "Realizar a troca, se não puder pode usar na tomada por enquanto (obs: bateria removida por segurança)",
+        "docPath": "dados/mt4ofcc0d7hljx/diag-mtmgxlshmm5jtp.pdf"
       }
     }
   ],
-  "atualizadoEm": "2026-09-04T05:40:28.597Z"
+  "atualizadoEm": "2026-09-04T06:09:13.550Z"
 }
