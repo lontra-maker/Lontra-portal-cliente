@@ -4,15 +4,15 @@
   "o": [
     {
       "n": "1000004S5",
-      "s": "esperando_peca",
+      "s": "concluido",
       "d": "2026-09-04",
       "t": "Baseado no diagnóstico DIAG-100001TF:",
       "v": 363.05,
       "eq": "",
       "assinado": false,
       "g": {
-        "pendente": true,
-        "inicio": null,
+        "pendente": false,
+        "inicio": "2026-09-13",
         "fisica": 90,
         "software": 7
       },
@@ -24,6 +24,18 @@
         {
           "s": "esperando_peca",
           "d": "2026-09-04T18:08:11.821Z"
+        },
+        {
+          "s": "manutencao",
+          "d": "2026-09-13T04:40:25.068Z"
+        },
+        {
+          "s": "concluido",
+          "d": "2026-09-13T06:03:42.596Z"
+        },
+        {
+          "s": "concluido",
+          "d": "2026-09-13T06:03:50.914Z"
         }
       ],
       "docs": {
@@ -71,5 +83,5 @@
   "a": [],
   "diag": [],
   "orc": [],
-  "atualizadoEm": "2026-09-04T18:08:52.762Z"
+  "atualizadoEm": "2026-09-13T06:04:32.701Z"
 }
