@@ -9,12 +9,12 @@
       "t": "Baseado no diagnóstico DIAG-100001TF:",
       "v": 363.05,
       "eq": "",
-      "assinado": false,
+      "assinado": true,
       "g": {
         "pendente": false,
         "inicio": "2026-09-13",
         "fisica": 90,
-        "software": 7
+        "software": 0
       },
       "h": [
         {
@@ -50,7 +50,7 @@
       "t": "Realizar limpeza e revitalização da carcaça",
       "v": 120,
       "eq": "Notebook Dell",
-      "assinado": false,
+      "assinado": true,
       "g": {
         "pendente": false,
         "inicio": "2026-09-04",
@@ -83,5 +83,5 @@
   "a": [],
   "diag": [],
   "orc": [],
-  "atualizadoEm": "2026-09-13T06:04:32.701Z"
+  "atualizadoEm": "2026-09-14T18:41:38.832Z"
 }
