@@ -1,0 +1,37 @@
+{
+  "c": "Ariadne Fernsndes",
+  "v4": "3581",
+  "o": [
+    {
+      "n": "1000005VH",
+      "s": "em_andamento",
+      "d": "2026-10-01",
+      "t": "Instalação e configuração da impressora g3110",
+      "v": 100,
+      "eq": "Impressora Canon G3110",
+      "assinado": true,
+      "g": {
+        "pendente": true,
+        "inicio": null,
+        "fisica": 0,
+        "software": 14
+      },
+      "h": [],
+      "docs": {
+        "recibo": "dados/mujfdz9ee8h9ny/muq32n895rtaqx-recibo.pdf"
+      }
+    }
+  ],
+  "a": [
+    {
+      "t": "Instalação de impressora — Ariadne Fernsndes",
+      "d": "2026-10-01",
+      "h": "17:00",
+      "l": "R. Jorge de Lima, 245,  Imbiribeira, Recife ",
+      "s": "concluido"
+    }
+  ],
+  "diag": [],
+  "orc": [],
+  "atualizadoEm": "2026-10-01T22:08:37.269Z"
+}
